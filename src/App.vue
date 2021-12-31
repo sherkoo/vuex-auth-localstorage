@@ -6,6 +6,29 @@
   <router-view/>
 </template>
 
+<script>
+/* eslint-disable */
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+  methods: {
+    ...mapGetters(['checkAuth']),
+    ...mapActions(['login'])
+  },
+  created(){
+    // check if user is logged in
+    console.log(this.checkAuth())
+    if(this.checkAuth()){
+      this.login();
+      console.log('from app.js')
+    } else {
+      console.log('checkauth is false')
+    }
+  }
+}
+</script>
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
